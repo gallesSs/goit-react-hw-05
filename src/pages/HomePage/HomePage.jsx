@@ -11,7 +11,7 @@ const HomePage = () => {
       setMovies(data);
     };
     getData();
-  });
+  }, []);
   return (
     <div>
       <h1>Trending today</h1>

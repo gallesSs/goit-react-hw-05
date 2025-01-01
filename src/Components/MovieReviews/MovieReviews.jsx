@@ -1,6 +1,6 @@
 import s from "./MovieReviews.module.css";
 import { useParams } from "react-router";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { fetchMovieReviews } from "../../services/api.js";
 
 const MovieReviews = () => {
@@ -15,15 +15,16 @@ const MovieReviews = () => {
   }, [movieId]);
   return (
     <div>
-      <ul>
-        {reviews && !reviews.length && <h2>There are no reviews yet</h2>}
-        {reviews.map((review) => (
-          <li className={s.review} key={review.id}>
-            <h3>Author: {review.author}</h3>
-            <p>{review.content}</p>
-          </li>
-        ))}
-      </ul>
+      <Suspense fallback={<div>Loading...</div>}>
+        <ul>
+          {reviews.map((review) => (
+            <li className={s.review} key={review.id}>
+              <h3>Author: {review.author}</h3>
+              <p>{review.content}</p>
+            </li>
+          ))}
+        </ul>
+      </Suspense>
     </div>
   );
 };

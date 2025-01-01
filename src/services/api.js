@@ -8,6 +8,7 @@ export const fetchPopularMovies = async () => {
   const { data } = await axios.get("/movie/popular", {
     params: {
       language: "en-US",
+      page: 1,
     },
   });
   return data.results;
