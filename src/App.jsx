@@ -2,15 +2,15 @@ import { Route, Routes } from "react-router";
 import { lazy, Suspense } from "react";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage.jsx"));
-const Navigation = lazy(() => import("./Components/Navigation/Navigation.jsx"));
+const Navigation = lazy(() => import("./components/Navigation/Navigation.jsx"));
 const MovieDetailsPage = lazy(
   () => import("./pages/MovieDetailsPage/MovieDetailsPage.jsx"),
 );
 const MoviesPage = lazy(() => import("./pages/MoviesPage/MoviesPage.jsx"));
 const NotFound = lazy(() => import("./pages/NotFound/NotFound.jsx"));
-const MovieCast = lazy(() => import("./Components/MovieCast/MovieCast.jsx"));
+const MovieCast = lazy(() => import("./components/MovieCast/MovieCast.jsx"));
 const MovieReviews = lazy(
-  () => import("./Components/MovieReviews/MovieReviews.jsx"),
+  () => import("./components/MovieReviews/MovieReviews.jsx"),
 );
 
 function App() {

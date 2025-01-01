@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useSearchParams } from "react-router";
-import SearchBar from "../../Components/SearchBar/SearchBar.jsx";
+import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 import { fetchMovieSearch } from "../../services/api.js";
 import s from "./MoviesPage.module.css";
 
