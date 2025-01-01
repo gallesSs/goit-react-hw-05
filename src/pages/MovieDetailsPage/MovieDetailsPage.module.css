@@ -1,0 +1,37 @@
+.card {
+  display: grid;
+  grid-template-areas:
+    "poster title"
+    "poster score"
+    "poster overview"
+    "poster genres";
+}
+.poster {
+  grid-area: poster;
+  height: 300px;
+  width: 100%;
+  padding: 7%;
+}
+
+.title {
+  grid-area: title;
+}
+
+.genres {
+  grid-area: genres;
+}
+
+.overview {
+  grid-area: overview;
+}
+
+.score {
+  grid-area: score;
+}
+
+.genresList {
+  display: flex;
+  flex-direction: row;
+  list-style-type: none;
+  gap: 20px;
+}

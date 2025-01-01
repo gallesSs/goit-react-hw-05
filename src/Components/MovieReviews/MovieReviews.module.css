@@ -1,0 +1,7 @@
+.review {
+  display: flex;
+  justify-content: flex-start;
+  align-items: start;
+  flex-direction: column;
+  gap: 20px;
+}
