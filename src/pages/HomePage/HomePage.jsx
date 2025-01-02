@@ -1,7 +1,7 @@
-import s from "./HomePage.module.css";
 import { useEffect, useState } from "react";
 import { fetchPopularMovies } from "../../services/api.js";
 import { Link } from "react-router";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
 const HomePage = () => {
   const [movies, setMovies] = useState([]);
@@ -15,17 +15,7 @@ const HomePage = () => {
   return (
     <div>
       <h1>Trending today</h1>
-      <ul className={s.list}>
-        {movies.map((movie) => (
-          <Link
-            className={s.link}
-            to={`movies/${movie.id.toString()}`}
-            key={movie.id}
-          >
-            {movie.title}
-          </Link>
-        ))}
-      </ul>
+      <MovieList movies={movies} />
     </div>
   );
 };

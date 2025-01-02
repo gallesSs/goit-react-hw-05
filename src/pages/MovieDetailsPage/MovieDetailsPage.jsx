@@ -1,13 +1,13 @@
-import React, { Suspense, useEffect, useState } from "react";
-import { Link, Outlet, useNavigate, useParams } from "react-router";
+import React, { Suspense, useEffect, useRef, useState } from "react";
+import { Link, Outlet, useLocation, useParams } from "react-router";
 import { fetchMoviesById } from "../../services/api.js";
 import s from "./MovieDetailsPage.module.css";
 
 const MovieDetailsPage = () => {
   const { movieId } = useParams();
   const [movie, setMovie] = useState(null);
-  const navigate = useNavigate();
-
+  const location = useLocation();
+  const goBackLink = useRef(location.state);
   useEffect(() => {
     const getData = async () => {
       const data = await fetchMoviesById(movieId);
@@ -17,7 +17,7 @@ const MovieDetailsPage = () => {
   }, [movieId]);
 
   if (!movie) {
-    return null;
+    return <h2>Loading movie details...</h2>;
   }
 
   const release = movie.release_date || "Unknown";
@@ -25,7 +25,7 @@ const MovieDetailsPage = () => {
 
   return (
     <div>
-      <button onClick={() => navigate(-1)}>Go back</button>
+      <Link to={goBackLink.current ?? "/movies"}>Go back</Link>
       <div className={s.card}>
         <h2 className={s.title}>
           {movie.title}
@@ -62,14 +62,13 @@ const MovieDetailsPage = () => {
       </div>
       <hr />
       <div>
-        <Suspense fallback={<h2>Loading ...</h2>}>
-          <h3>Additional information</h3>
+        <h3>Additional information</h3>
 
-          <nav>
-            <Link to="cast">Show cast</Link>
-            <Link to="reviews">Show reviews</Link>
-          </nav>
-
+        <nav>
+          <Link to="cast">Show cast</Link>
+          <Link to="reviews">Show reviews</Link>
+        </nav>
+        <Suspense fallback={<h2>Loading additional information...</h2>}>
           <Outlet />
         </Suspense>
       </div>
