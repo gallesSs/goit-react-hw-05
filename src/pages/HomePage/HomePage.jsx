@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { fetchPopularMovies } from "../../services/api.js";
-import { Link } from "react-router";
 import MovieList from "../../components/MovieList/MovieList.jsx";
 
 const HomePage = () => {
