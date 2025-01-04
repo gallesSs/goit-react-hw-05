@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useSearchParams } from "react-router";
+import { useSearchParams } from "react-router";
 import SearchBar from "../../components/SearchBar/SearchBar.jsx";
 import { fetchMovieSearch } from "../../services/api.js";
-import s from "./MoviesPage.module.css";
+import MovieList from "../../components/MovieList/MovieList.jsx";
 
 const MoviesPage = () => {
   const [movies, setMovies] = useState([]);
@@ -29,13 +29,7 @@ const MoviesPage = () => {
   return (
     <div>
       <SearchBar handleSetQuery={handleSetQuery} />
-      <ul className={s.list}>
-        {movies.map((movie) => (
-          <Link className={s.link} to={movie.id.toString()} key={movie.id}>
-            {movie.title}
-          </Link>
-        ))}
-      </ul>
+      <MovieList movies={movies} />
     </div>
   );
 };

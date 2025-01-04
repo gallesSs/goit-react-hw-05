@@ -9,7 +9,7 @@ const MovieList = ({ movies }) => {
         {movies.map((movie) => (
           <Link
             className={s.link}
-            to={`movies/${movie.id.toString()}`}
+            to={`/movies/${movie.id}`}
             key={movie.id}
             state={location}
           >
